@@ -21,6 +21,8 @@ function App() {
       const correctedWord = customDictionary[word.toLowerCase()];
       return correctedWord || "";
     })
+    console.log(correctedWords, "correctedWords");
+    
     const firstCorrection = correctedWords.find(
       (word, index) => word !== word[index]
     );
@@ -39,7 +41,7 @@ function App() {
       {suggestionText && (
         <p>
           Did you mean:
-          <span>{suggestionText}?</span>
+          <strong>{suggestionText}?</strong>
         </p>
       )}
     </>
