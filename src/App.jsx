@@ -21,10 +21,10 @@ function App() {
     const firstCorrection = correctedWords.find(
       (word, index) => word !== words[index]
     );
-    // setSuggestionText(firstCorrection || "");
-    setTimeout(() => {
-      setSuggestionText(firstCorrection || "");
-    }, 0);
+    setSuggestionText(firstCorrection || "");
+    // setTimeout(() => {
+    //   setSuggestionText(firstCorrection || "");
+    // }, 0);
   };
   return (
     <>
