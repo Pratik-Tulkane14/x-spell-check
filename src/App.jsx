@@ -36,12 +36,12 @@ function App() {
         value={input}
         onChange={(e) => handleChange(e)}
       ></textarea>
+        {suggestionText && (
       <p>
         Did you mean:
-        {suggestionText && (
           <strong className="suggestion">{suggestionText}?</strong>
-        )}
       </p>
+        )}
     </>
   );
 }
