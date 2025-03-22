@@ -1,14 +1,11 @@
 import { useState } from "react";
-// import "./App.css";
+import "./App.css";
 
 function App() {
   const customDictionary = {
     teh: "the",
-
     wrok: "work",
-
     fot: "for",
-
     exampl: "example",
   };
   const [input, setInput] = useState("");
@@ -21,8 +18,6 @@ function App() {
       const correctedWord = customDictionary[word.toLowerCase()];
       return correctedWord || word;
     });
-    console.log(correctedWords, "correctedWords");
-
     const firstCorrection = correctedWords.find(
       (word, index) => word !== words[index]
     );
@@ -41,7 +36,7 @@ function App() {
       {suggestionText && (
         <p>
           Did you mean:
-          <strong>{suggestionText}?</strong>
+          <strong className="suggestion">{suggestionText}?</strong>
         </p>
       )}
     </>
