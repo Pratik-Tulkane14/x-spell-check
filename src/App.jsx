@@ -8,24 +8,28 @@ function App() {
     fot: "for",
     exampl: "example",
   };
+
   const [input, setInput] = useState("");
   const [suggestionText, setSuggestionText] = useState("");
+
   const handleChange = (e) => {
     const text = e.target.value;
     setInput(text);
+
     const words = text.split(" ");
-    const correctedWords = words.map((word) => {
+
+    let firstCorrection = "";
+    for (let word of words) {
       const correctedWord = customDictionary[word.toLowerCase()];
-      return correctedWord || word;
-    });
-    const firstCorrection = correctedWords.find(
-      (word, index) => word !== words[index]
-    );
-    setSuggestionText(firstCorrection || "");
-    // setTimeout(() => {
-    //   setSuggestionText(firstCorrection || "");
-    // }, 0);
+      if (correctedWord && correctedWord !== word.toLowerCase()) {
+        firstCorrection = correctedWord;
+        break;
+      }
+    }
+
+    setSuggestionText(firstCorrection);
   };
+
   return (
     <>
       <h1>Spell Check & Auto-Correction</h1>
@@ -34,14 +38,14 @@ function App() {
         id="input-area"
         placeholder="Enter text..."
         value={input}
-        onChange={(e) => handleChange(e)}
+        onChange={handleChange}
       ></textarea>
-        {suggestionText && (
-      <p>
-        Did you mean:
+      {suggestionText && (
+        <p>
+          Did you mean:{" "}
           <strong className="suggestion">{suggestionText}?</strong>
-      </p>
-        )}
+        </p>
+      )}
     </>
   );
 }
